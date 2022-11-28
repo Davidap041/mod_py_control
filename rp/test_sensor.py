@@ -12,4 +12,4 @@ from sensores import *
 sensores = Sensores()
 # print(sensores)
 
-sensores.lerSensores()
+print(sensores.lerSensor(5))
