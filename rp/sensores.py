@@ -1,5 +1,5 @@
 class Sensor :
-    def __init__(self,index,nome,sinal):
+    def __init__(self,index,nome: str ,sinal):
         self.nome = nome
         self.sinal = sinal
         self.index = index
@@ -51,6 +51,6 @@ class Sensores:
         # return msg
         
     def lerSensor(self,n):
-        print(self.sensores[n])
+        print(f'[read] : {self.sensores[n]}')
         return self.sensores[n].sinal
  
