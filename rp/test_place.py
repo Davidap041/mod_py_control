@@ -12,3 +12,7 @@ print(p1)
 
 p2 = Place(id = 2, fichas= 1,nome ='Move X')
 print(p2)
+
+''' Teste de Lugares'''
+l = Lugares()
+print(l)

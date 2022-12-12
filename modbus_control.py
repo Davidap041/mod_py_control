@@ -23,6 +23,8 @@ while True:
     leitura_sensores = c.read_coils(0, 18)
     # atualizar na classe
     sensores.atualizarSensores(vetor = leitura_sensores ) 
+    # atualizar lugares
+    
 
     if leitura_sensores: # sucesso na leitura
         print('\n')

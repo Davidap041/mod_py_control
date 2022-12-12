@@ -1,3 +1,4 @@
+from rede_Petri import *
 # Modelagem de um lugar
 class Place:
     # atributos
@@ -17,3 +18,10 @@ class Place:
         self.fichas = self.fichas + n
 
 # Modelagem dos lugares
+class Lugares:
+    lugares = p
+    #atributos
+    def __str__(self) -> str:
+        return f'Lugares :{self.lugares}'
+    
+    
