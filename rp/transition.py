@@ -1,30 +1,31 @@
 from place import *
 
+
 class Transition:
-    def __init__(self, id:int, entrada:Place ,saida:Place):
-        self.id = id # identificador da transição
-        self.entrada = entrada # entradas da transição
-        self.saida = saida # saidas da transição
-        self.habilitado = False # habilitada ou não
-        
+    def __init__(self, id: int, entrada: list[Place], saida: list[Place]):
+        self.id = id  # identificador da transição
+        self.entrada = entrada  # entradas da transição
+        self.saida = saida  # saidas da transição
+        self.habilitado = False  # habilitada ou não
+
     def __str__(self):
         if self.habilitado:
             return f"(t{self.id} = Habilitada) \nTransição {self.id} com : \n  Entrada(s) em {self.entrada}, \n  Saida(s) em {self.saida}"
         else:
             return f"(t{self.id} = Desabilitada) \nTransição {self.id} com: \n  Entrada(s) em {self.entrada}, \n  Saida(s) {self.saida} "
-    
-    def atualizarStatus(self) : 
+
+    def atualizarStatus(self):
         if self.entrada.fichas >= 1:
             self.habilitado = True
-        else :
+        else:
             self.habilitado = False
-        
+
     def acionar(self):
         self.atualizarStatus()
-        if self.habilitado :
-            self.entrada.retirarFicha(1) # considerando arco de entrada de peso 1
-            self.saida.adicionarFicha(1) # considerando arco de saida de peso 1            
-        else :
+        if self.habilitado:
+            # considerando arco de entrada de peso 1
+            self.entrada.retirarFicha(1)
+            # considerando arco de saida de peso 1
+            self.saida.adicionarFicha(1)
+        else:
             print("Transição não habilitada")
-        
-        
