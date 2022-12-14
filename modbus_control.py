@@ -1,38 +1,40 @@
 import time
-from rp.sensores import Sensores
 from rp.atuadores import Atuadores
+from rp.place import *
 from pyModbusTCP.client import ModbusClient
 
 ''' Inicializar Cliente Modbus '''
 c = ModbusClient(host='192.168.1.131', port=502, auto_open=True, debug=False)
 
-''' Inicializar Sensores '''
-sensores = Sensores()
-
 ''' Inicializar Atuadores '''
 valor_inicial = [False]*20
 atuadores = Atuadores(valor_inicial)
+places = Lugares()
 
 ''' main loop '''
 i = 1
 bit = True
-while True:
-    print(f'\n -- Step : {i} ')
+while i < 2:
+    print(f'\n --Step : {i} ')
+    print(places.printLugares())
     ''' Atualização dos sensores '''
     # ler sensores modbus
     leitura_sensores = c.read_coils(0, 18)
-    # atualizar na classe
-    sensores.atualizarSensores(vetor = leitura_sensores ) 
+    # atualizar na lugares
+    if(leitura_sensores):
+        places.atualizarLugares(leitura_sensores)
+        print(places.printLugares())
+
     # atualizar lugares
     
 
-    if leitura_sensores: # sucesso na leitura
-        print('\n')
-        sensores.lerSensores()
-    else: # falha na leitura
-        print('unable to read coils')
+    # if leitura_sensores: # sucesso na leitura
+    #     print('\n')
+    #     sensores.lerSensores()
+    # else: # falha na leitura
+    #     print('unable to read coils')
     
-    if(i == 5 ):  sensores.lerSensor(5)
+    # if(i == 5 ):  sensores.lerSensor(5)
     
     ''' Atualização dos Atuadores '''    
     # atualizar atuador

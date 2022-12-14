@@ -9,7 +9,9 @@ class Actuator:
 
     def atualizarActuator(self, sinal):
         self.sinal = sinal
-
+    
+    def lerSinal(self) -> bool:
+        return True if self.sinal else False
 
 lista_atuadores = [
     Actuator(0, 'Grab', False),
